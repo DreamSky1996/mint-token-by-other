@@ -133,6 +133,16 @@ contract MintContract is Ownable {
     mintRate = _newRate;
   }
 
+  function setBuyToken(address _newBT) public onlyOwner {
+    require(_newBT != address(0));
+    buyToken = _newBT;
+  }
+
+  function setMintableToken(address _newMT) public onlyOwner {
+    require(_newMT != address(0));
+    mintableToken = _newMT;
+  }
+
   function valueOf(uint256 _amount) public view returns (uint256 value_) {
     uint256 _value_ = _amount.mul(10**IERC20(mintableToken).decimals()).div(
       10**IERC20(buyToken).decimals()
