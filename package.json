@@ -1,0 +1,38 @@
+{
+  "name": "nft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "clean": "npx hardhat clean",
+    "deploy": "npx hardhat run --network rinkeby scripts/deploy.js",
+    "merge-contracts": "sol-merger \"./contracts/*.sol\" ./build",
+    "merge-contracts-mocks": "sol-merger \"./contracts/mocks/*.sol\" ./build/mocks"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.2",
+    "@openzeppelin/contracts-upgradeable": "^4.4.2",
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-etherscan": "^2.1.8",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/hardhat-upgrades": "^1.13.0",
+    "@openzeppelin/test-helpers": "^0.5.12",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.1",
+    "hardhat": "^2.8.0",
+    "prettier": "^2.3.2",
+    "prettier-plugin-solidity": "^1.0.0-beta.17",
+    "sol-merger": "^3.1.0",
+    "solhint": "^3.3.6",
+    "solhint-plugin-prettier": "0.0.5"
+  }
+}
