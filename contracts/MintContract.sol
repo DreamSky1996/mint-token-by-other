@@ -118,9 +118,11 @@ contract MintContract is Ownable {
 
   function mint(uint256 _amount) public {
     require(!paused);
-    require(_amount > 0);
+    require(_amount > 0, "Amount too small");
+    require( _amount < 10, "Amount too large");
 
-    IERC20(buyToken).transferFrom(msg.sender, address(this), _amount);
+    uint256 amount = _amount.mul( 10**IERC20(buyToken).decimals() );
+    IERC20(buyToken).transferFrom(msg.sender, address(this), amount);
     uint256 value = valueOf(_amount);
     IERC20Mintable(mintableToken).mint(msg.sender, value);
   }
@@ -144,9 +146,7 @@ contract MintContract is Ownable {
   }
 
   function valueOf(uint256 _amount) public view returns (uint256 value_) {
-    uint256 _value_ = _amount.mul(10**IERC20(mintableToken).decimals()).div(
-      10**IERC20(buyToken).decimals()
-    );
+    uint256 _value_ = _amount.mul( 10**IERC20(mintableToken).decimals() );
     value_ = _value_.mul(mintRate).div(10000);
   }
 

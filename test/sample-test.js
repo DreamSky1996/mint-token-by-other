@@ -10,7 +10,7 @@ describe("MintContract contract", function () {
   let mintContract;
   let owner;
   const zeroAddress = '0x0000000000000000000000000000000000000000';
-  const initialMint = '10000000000000000000000000';
+  const initialMint = '100000000000000000000000000000000';
   const mintAmount = '10000000000000000';
 
   // `beforeEach` will run before each test, re-deploying the contract every
@@ -71,9 +71,9 @@ describe("MintContract contract", function () {
 
       await bt.approve( mintContract.address, initialMint );
       expect(await bt.allowance(owner.address, mintContract.address)).to.equal(initialMint);
-
-      await mintContract.mint(mintAmount);
-      expect(await mt.balanceOf(owner.address)).to.equal('10000000000000000000');
+      
+      await mintContract.mint("9");
+      expect(await mt.balanceOf(owner.address)).to.equal('9000000000');
 
     });
     
