@@ -151,8 +151,8 @@ contract MintContract is Ownable {
   }
 
   function withdrawECR20() public onlyOwner {
-    uint256 amount = IERC20(mintableToken).balanceOf(address(this));
-    IERC20(mintableToken).transfer(msg.sender, amount);
+    uint256 amount = IERC20(buyToken).balanceOf(address(this));
+    IERC20(buyToken).transfer(msg.sender, amount);
     emit WithdrawalERC20(amount);
   }
 }
